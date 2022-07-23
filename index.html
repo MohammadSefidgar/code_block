@@ -1,0 +1,90 @@
+ <html>
+<head>
+<style>
+
+
+h1{
+color:blue}
+
+#button1{
+text-color:red;}
+
+
+#list{background-color:powderred;}
+
+<script>
+var names, newName;
+
+function randomInt(n) {
+  // Return a random number from in [0, n[
+  return Math.floor(Math.random()*n);
+}
+
+function randomMember(arr) {
+  // Return a random member of the array
+  return arr[randomInt(arr.length)]
+}
+
+function getNumberOrString(value) {
+  // Convert a string value to a number if possible
+  let number_value = Number(value);
+  if (Number.isNaN(number_value)) {
+    return value
+  } else {
+    return number_value
+  }
+}
+
+
+names = [];
+
+
+document.getElementById('button2').addEventListener('click', (event) => {
+  let element_displayName = document.getElementById('displayName');
+  element_displayName.innerText = randomMember(names);
+
+});
+
+document.getElementById('button1').addEventListener('click', (event) => {
+  let element_text = document.getElementById('text');
+  let new_li = document.createElement('li');
+  newName = getNumberOrString(document.getElementById('text').value);
+
+  element_text.appendChild(new_li);
+  let element_list = document.getElementById('list');
+  let new_li2 = document.createElement('li');
+  new_li2.innerText = getNumberOrString(document.getElementById('text').value);
+
+  element_list.appendChild(new_li2);
+  names.unshift(newName);
+
+});
+
+document.getElementById('button3').addEventListener('click', (event) => {
+  let element_list2 = document.getElementById('list');
+  element_list2.replaceChildren();
+  let element_displayName2 = document.getElementById('displayName');
+  element_displayName2.replaceChildren();
+
+});
+</script>
+
+</style>
+</head>
+<body id="body2">
+
+
+      <h1>List of Names</h1>
+     <ul id="list"></ul>
+<input id="text" />
+<button id="button1">Add Name</button>
+<br/>
+<p><span id="displayName"></span>
+<button id="button2"> Select a facilitator </button>
+<br/>
+<br>
+<button id="button3">Remove the names</button>
+<br/>
+
+</body>
+</html>
